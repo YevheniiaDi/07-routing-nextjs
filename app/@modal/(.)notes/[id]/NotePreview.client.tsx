@@ -23,10 +23,11 @@ export default function NotePreview({ id }: Props) {
   return (
     <Modal>
       <div className={css.container}>
-        <h2>{note.title}</h2>
-        <p>{note.content}</p>
-        <p>Created on: {formattedDate}</p>
+        <h2 className={css.title}>{note.title}</h2>
+        <p className={css.paragraph}>{note.content}</p>
+        <p className={css.paragraph}>Created on: {formattedDate}</p>
       </div>
     </Modal>
   );
 }
+
