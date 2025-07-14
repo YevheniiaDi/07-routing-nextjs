@@ -1,10 +1,8 @@
-import css from "./not-found.module.css";
-
 export default function NotFound() {
   return (
-    <main>
-      <h1 className={css.title}>404 - Page not found</h1>
-      <p className={css.description}>Sorry, the page you are looking for does not exist.</p>
-    </main>
+    <>
+      <h1 className="title">404 - Page not found</h1>
+      <p className="description">Sorry, the page you are looking for does not exist.</p>
+    </>
   );
 }

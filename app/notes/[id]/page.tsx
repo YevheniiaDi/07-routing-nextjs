@@ -1,19 +1,14 @@
-import {
-  HydrationBoundary,
-  QueryClient,
-  dehydrate,
-} from "@tanstack/react-query";
-import { fetchNoteById } from "@/lib/api";
+import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
 import NoteDetailsClient from "./NoteDetails.client";
+import { fetchNoteById } from "@/lib/api";
+import { notFound } from "next/navigation";
 
-export default async function NoteDetailsPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default async function Page({ params }: any) {
   const id = Number(params.id);
-
-  if (isNaN(id)) throw new Error("Invalid note ID");
+  if (isNaN(id)) {
+    notFound();
+  }
 
   const queryClient = new QueryClient();
 

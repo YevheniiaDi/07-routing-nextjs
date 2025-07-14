@@ -12,7 +12,6 @@ export default function NoteDetailsClient({ id }: Props) {
   const {
     data: note,
     isLoading,
-    isError,
     error,
   } = useQuery({
     queryKey: ["note", id],
@@ -20,7 +19,14 @@ export default function NoteDetailsClient({ id }: Props) {
   });
 
   if (isLoading) return <p>Loading, please wait...</p>;
-  if (isError || !note) return <p>Could not fetch note details.</p>;
+
+  if (error || !note) {
+    let message = "Something went wrong.";
+    if (error instanceof Error) {
+      message += ` ${error.message}`;
+    }
+    return <p>{message}</p>;
+  }
 
   const formattedDate = new Date(note.date).toLocaleDateString(undefined, {
     year: "numeric",
@@ -41,3 +47,4 @@ export default function NoteDetailsClient({ id }: Props) {
     </div>
   );
 }
+

@@ -1,13 +1,11 @@
-import {
-  HydrationBoundary,
-  QueryClient,
-  dehydrate,
-} from "@tanstack/react-query";
+import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
 import { fetchNotes } from "@/lib/api";
 import NotesClient from "./Notes.client";
 
-export default async function NotesPage({ params }: { params: { slug?: string[] } }) {
-  const tag = params.slug?.[0] ?? ""; // якщо тег є, беремо перший, інакше пустий
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default async function NotesPage({ params }: any) {
+  const tag =
+    Array.isArray(params.slug) && params.slug.length > 0 ? params.slug[0] : "";
 
   const queryClient = new QueryClient();
 
