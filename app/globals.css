@@ -7,3 +7,13 @@ body {
   margin: 0;
   background-color: #f8f9fa;
 }
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.description {
+  text-align: center;
+  color: #555;
+}
