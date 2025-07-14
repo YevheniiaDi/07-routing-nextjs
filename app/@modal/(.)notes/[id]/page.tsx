@@ -3,21 +3,19 @@ import NotePreview from "./NotePreview.client";
 import { fetchNoteById } from "@/lib/api";
 import { Metadata } from "next";
 
-export async function generateMetadata({
-  params,
-}: {
+interface PageProps {
   params: { id: string };
-}): Promise<Metadata> {
+}
+
+export async function generateMetadata(
+  { params }: PageProps
+): Promise<Metadata> {
   return {
     title: `Note ${params.id} | NoteHub`,
   };
 }
 
-export default async function Page({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default async function Page({ params }: PageProps) {
   const id = Number(params.id);
 
   const queryClient = new QueryClient();
